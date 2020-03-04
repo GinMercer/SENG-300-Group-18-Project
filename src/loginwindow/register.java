@@ -96,10 +96,8 @@ public class register extends JPanel {
 				
 				String pass = String.valueOf( password.getPassword());
 				String confirm = String.valueOf( comfirmpass.getPassword());
-				if(pass.equals(confirm) && !(user == null || user.isEmpty())){
-					JOptionPane.showMessageDialog(null, "You create your account successfully!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-				}
 				
+				//username and password are both required
 				if(!pass.equals(confirm)) {
 					JOptionPane.showMessageDialog(null, "Please check password", "ERROR", JOptionPane.ERROR_MESSAGE);
 					return;
@@ -112,7 +110,28 @@ public class register extends JPanel {
 					JOptionPane.showMessageDialog(null, "Invalid password", "ERROR", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				auth.register(user, pass);
+				
+				String tmp = auth.register(user, pass);
+				//check if username and password is valid
+				if(tmp == "Works") {
+					JOptionPane.showMessageDialog(null, "You create your account successfully!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else if(tmp == "Invalid username"){
+					JOptionPane.showMessageDialog(null, "Invalid username", "ERROR", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				else if(tmp == "Invalid password"){
+					JOptionPane.showMessageDialog(null, "Invalid password", "ERROR", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				else if(tmp == "Username taken"){
+					JOptionPane.showMessageDialog(null, "Username taken", "ERROR", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Unknown issue", "ERROR", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				login panel = new login(frame, auth);
 				frame.setContentPane(panel);
 				frame.revalidate();
