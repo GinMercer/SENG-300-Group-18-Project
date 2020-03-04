@@ -9,7 +9,11 @@ public class Mainframe {
 	private JFrame frame;
 	private authenticator auth = new authenticator();
 
-	
+	/**
+	 * Main method for the paper submission system
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -24,11 +28,17 @@ public class Mainframe {
 	}
 
 	
+	/**
+	 * Default constructor for Mainframe
+	 */
 	public Mainframe() {
 		initialize();
 	}
 
 	
+	/**
+	 * Initialize properties of the JFrame object
+	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 700, 500);
