@@ -14,7 +14,7 @@ public class authenticator {
 	 * 
 	 */
 	public authenticator() {
-		// TODO Auto-generated constructor stub
+		//Auto-generated constructor stub
 	}
 	
 	public String register(String username, String password) {
