@@ -6,17 +6,13 @@ public class Account {
 	
 	private String password;
 	
-	
-	//username should not be longer than 16
 	public static boolean checkUsername(String username) {
 		if(username.length() <= 16) {
 			return true;
 		}
 		return false; 
 	}
-	
-	
-	//password should not be shorter than 8
+
 	public static boolean checkPassword(String pass) {
 		if(pass.length() >= 8) {
 			return true;
