@@ -37,7 +37,7 @@ Iteration 1 (As of March 2)
 The user must have java installed in their system to run the program that we upload on this project.
 The user may run the program by simply running the executable jar file or by importing the project into an IDE and running it using the IDE, or compiling and running the program with the commandline/terminal.
 
-- The user can login using the default username "xian kong zhe " with the default Password "ye xian kong zhe".
+- The user can login in by register the user name and password first, the user name should less than 16 bits, and password should not less than 8 bits.
 
 - If the user does not use proper username and login combination, they will be prompted with a message.
 
