@@ -14,7 +14,7 @@ public class authenticator {
 	 * Default constructor for authenticator
 	 */
 	public authenticator() {
-		// TODO Auto-generated constructor stub
+		//Auto-generated constructor stub
 	}
 	
 	/**

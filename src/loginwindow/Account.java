@@ -7,8 +7,8 @@ public class Account {
 	private String password;
 
 	/**
-	 * Checks if given input is a valid input for a username.
-	 * 
+	 * Checks if given input is a valid input for a username (username should not be longer than 16).
+	 *
 	 * @param username
 	 * @return false if not a valid input, true if valid
 	 */
@@ -20,8 +20,8 @@ public class Account {
 	}
 	
 	/**
-	 * Checks if given string is a valid length to be taken as a password.
-	 * 
+	 * Checks if given string is a valid length to be taken as a password (password should not be shorter than 8).
+	 *
 	 * @param pass
 	 * @return true if length is greater than or equal to 8, false otherwise
 	 */

@@ -91,7 +91,7 @@ public class login extends JPanel {
 		});
 			
 		btnRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		btnRegister.setBounds(220, 339, 100, 40);	
+		btnRegister.setBounds(220, 339, 120, 40);	
 			
 		setLayout(null);
 		add(lblWelcomeToOpen);

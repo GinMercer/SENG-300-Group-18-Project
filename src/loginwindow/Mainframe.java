@@ -27,7 +27,6 @@ public class Mainframe {
 		});
 	}
 
-	
 	/**
 	 * Default constructor for Mainframe
 	 */
@@ -35,7 +34,6 @@ public class Mainframe {
 		initialize();
 	}
 
-	
 	/**
 	 * Initialize properties of the JFrame object
 	 */
