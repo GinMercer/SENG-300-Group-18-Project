@@ -30,6 +30,7 @@ First, add the git repository into eclipse. This is visible in the drop down men
 - Zhen Gui
 - Jason Jiang
 - Sebastian Collard
+- Boxiao Li
 _________________________________________________________________________________________________________________________________________
 Iteration 1 (As of March 2)
 
