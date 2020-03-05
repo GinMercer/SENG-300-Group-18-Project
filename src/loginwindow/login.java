@@ -25,7 +25,12 @@ public class login extends JPanel {
 	private JTextField textUser;
 	private JPasswordField textPass;
 
-	
+	/**
+	 * login constructor that takes a JFrame and an authenticator
+	 * 
+	 * @param frame
+	 * @param auth
+	 */
 	public login(JFrame frame, authenticator auth) {
 		setBackground(Color.GRAY);
 		
