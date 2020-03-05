@@ -1,5 +1,5 @@
 # SENG-300-Group-18-Project
-A Jounral submission program
+A Journal submission program
 
 ## Getting Started
 This project is developed using Java. To get it up and running on your local machine, the installation guide is given below. Two forms of installation can be used. One with a dedicated IDE of your choice (Eclipse or IntelliJ), or by running the executable JAR file given.
