@@ -6,12 +6,14 @@ public class Account {
 	
 	private String password;
 
+
 	/**
 	 * Checks if given input is a valid input for a username (username should not be longer than 16).
 	 *
 	 * @param username
 	 * @return false if not a valid input, true if valid
 	 */
+
 	public static boolean checkUsername(String username) {
 		if(username.length() <= 16) {
 			return true;
@@ -25,6 +27,7 @@ public class Account {
 	 * @param pass
 	 * @return true if length is greater than or equal to 8, false otherwise
 	 */
+
 	public static boolean checkPassword(String pass) {
 		if(pass.length() >= 8) {
 			return true;
