@@ -26,7 +26,7 @@ public class register extends JPanel {
 	private JPasswordField comfirmpass;
 
 	/**
-	 * Create the panel.
+	 * Create the panel. Constructor for register that takes a JFrame and an authenticator.
 	 */
 	public register(JFrame frame, authenticator auth) {
 		setBackground(new Color(255, 255, 153));
