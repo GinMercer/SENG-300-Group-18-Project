@@ -39,14 +39,10 @@ The user may run the program by simply running the executable jar file or by imp
 
 - The user can login in by register the user name and password first, the user name should less than 16 bits, and password should not less than 8 bits.
 
+-If a user registers with a password or username that do not match the requirements, an error message will also pop up.
+
+- The user can login in by register the user name and password first, the user name should less than 16 bits, and password should not less than 8 bits.
+
 - If the user does not use proper username and login combination, they will be prompted with a message.
-
-- Once logged in, the user can open submission pages and perform operations in these pages via buttons.
-
-- The user can open one of each window simultaneously (up to 5 windows at once: main menu, journal submission window...etc.) but the user may not open more than one submission page. The system prevents them from doing so by greying out the corresponding button that is used to open a window.
-
-- Inside the submission pages and main menu, the user can interact with a dropdown list containing dummy objects which are placeholders for both the submission pages and the main menu. Which will be added later on.
-
-- At the bottom of these windows, there is a search selection which currently does not do anything and will be implemented later on.
 
 We will enchance the system to meet the needs later on.
