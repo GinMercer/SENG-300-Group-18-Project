@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class Mainframe {
 
 	private JFrame frame;
-	private authenticator auth = new authenticator();
+	private Authenticator auth = new Authenticator();
 
 	/**
 	 * Main method for the paper submission system
