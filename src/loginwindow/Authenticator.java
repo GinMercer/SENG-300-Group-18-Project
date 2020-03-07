@@ -60,7 +60,7 @@ public class Authenticator {
 				return accounts.get(username);
 			}
 			else {
-				System.out.println("fall to login, please check your password");
+				System.out.println("fail to login, please check your password");
 				return null;
 			}
 		}
