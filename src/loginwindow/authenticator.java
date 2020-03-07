@@ -60,10 +60,12 @@ public class authenticator {
 				return accounts.get(username);
 			}
 			else {
+				System.out.println("fall to login, please check your password");
 				return null;
 			}
 		}
 		else {
+			System.out.println("cannot find user, please click register to create a new account");
 			return null;
 		}
 	}
