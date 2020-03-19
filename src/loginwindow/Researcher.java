@@ -15,7 +15,7 @@ public class Researcher extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Researcher(JFrame frame, authenticator auth) {
+	public Researcher(JFrame frame, Authenticator auth) {
 		setBackground(Color.LIGHT_GRAY);
 		
 		JButton btnNewButton = new JButton("Back");

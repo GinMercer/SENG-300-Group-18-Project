@@ -33,7 +33,7 @@ public class register extends JPanel {
 	/**
 	 * Create the panel. Constructor for register that takes a JFrame and an authenticator.
 	 */
-	public register(JFrame frame, authenticator auth) {
+	public register(JFrame frame, Authenticator auth) {
 		setBackground(new Color(255, 255, 153));
 		setLayout(null);
 		

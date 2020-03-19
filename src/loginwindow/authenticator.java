@@ -6,14 +6,14 @@ package loginwindow;
 import java.util.HashMap;
 
 
-public class authenticator {
+public class Authenticator {
 	
 	private HashMap<String, Account> accounts = new HashMap<String, Account>();
 
 	/**
 	 * Default constructor for authenticator
 	 */
-	public authenticator() {
+	public Authenticator() {
 		// TODO Auto-generated constructor stub
 	}
 	

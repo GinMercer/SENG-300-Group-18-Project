@@ -15,7 +15,7 @@ public class Editor extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Editor(JFrame frame, authenticator auth) {
+	public Editor(JFrame frame, Authenticator auth) {
 		setBackground(Color.BLACK);
 		
 		JButton btnNewButton = new JButton("Back");

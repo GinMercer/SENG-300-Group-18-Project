@@ -15,7 +15,7 @@ public class Reviewer extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Reviewer(JFrame frame, authenticator auth) {
+	public Reviewer(JFrame frame, Authenticator auth) {
 		setBackground(Color.DARK_GRAY);
 		
 		JButton btnNewButton = new JButton("Back");

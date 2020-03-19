@@ -31,7 +31,7 @@ public class login extends JPanel {
 	 * @param frame
 	 * @param auth
 	 */
-	public login(JFrame frame, authenticator auth) {
+	public login(JFrame frame, Authenticator auth) {
 		setBackground(Color.GRAY);
 		
 		JLabel lblWelcomeToOpen = new JLabel("Welcome to Open Journal Submission System");
