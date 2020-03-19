@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class Mainframe {
 
 	private JFrame frame;
-	private authenticator auth = new authenticator();
+	private Authenticator auth = new Authenticator();
 
 	/**
 	 * Main method for the paper submission system
@@ -35,12 +35,12 @@ public class Mainframe {
 	}
 
 	/**
-	 * Initialize properties of the JFrame object
+	 * Default constructor for Mainframe
 	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 700, 500);
-		login panel = new login(frame, auth);
+		Login panel = new Login(frame, auth);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(panel);
 		frame.revalidate();

@@ -6,15 +6,15 @@ package loginwindow;
 import java.util.HashMap;
 
 
-public class authenticator {
+public class Authenticator {
 	
 	private HashMap<String, Account> accounts = new HashMap<String, Account>();
 
 	/**
 	 * Default constructor for authenticator
 	 */
-	public authenticator() {
-		//Auto-generated constructor stub
+	public Authenticator() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -24,23 +24,25 @@ public class authenticator {
 	 * @param password
 	 * @return checks the inputs against the database and outputs if the registration was a success or if there exists an issue 
 	 */
-	public String register(String username, String password) {
-		
+	public String register(String username, String password, String acctType) {
 		boolean correctuser = Account.checkUsername(username);
 		boolean correctpass = Account.checkPassword(password);
 		boolean notsameuser = !accounts.containsKey(username);
-		
 		if(correctuser && correctpass && notsameuser) {
-			accounts.put(username, new Account(username, password));
+			accounts.put(username, new Account(username, password, acctType));
+			System.out.println("Works");
 			return "Works";
 		}
 		if(!correctuser) {
+			System.out.println("Invalid username");
 			return "Invalid username";
 		}
 		if(!correctpass) {
+			System.out.println("Invalid password");
 			return "Invalid password";
 		}
 		if(!notsameuser) {
+			System.out.println("Username taken");
 			return "Username taken";
 		}
 		return "Unknown issue"; 

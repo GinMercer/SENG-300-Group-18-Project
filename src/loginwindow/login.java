@@ -17,11 +17,11 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 
-public class login extends JPanel {
+public class Login extends JPanel {
 	/**
 	 * 
 	 */
-
+	private static final long serialVersionUID = 1L;
 	private JTextField textUser;
 	private JPasswordField textPass;
 
@@ -31,7 +31,7 @@ public class login extends JPanel {
 	 * @param frame
 	 * @param auth
 	 */
-	public login(JFrame frame, authenticator auth) {
+	public Login(JFrame frame, Authenticator auth) {
 		setBackground(Color.GRAY);
 		
 		JLabel lblWelcomeToOpen = new JLabel("Welcome to Open Journal Submission System");
@@ -62,9 +62,7 @@ public class login extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				String user = textUser.getText();
 				String pass = String.valueOf( textPass.getPassword());
-				auth.login(user, pass);
-				
-				
+							
 				if ((user == null || user.isEmpty()) && (pass == null || pass.isEmpty())) {
 					JOptionPane.showMessageDialog(null, "Please enter username and password", "ERROR", JOptionPane.ERROR_MESSAGE);
                     //JOptionPane.showMessageDialog(null, "Please enter username and password", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -77,6 +75,24 @@ public class login extends JPanel {
 		});
 		loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String uname = textUser.getText();
+				String pass = String.valueOf( textPass.getPassword());
+				
+				if (auth.login(uname, pass) != null) {
+					if (auth.login(uname, pass).getAccountType() == "Researcher") {
+						Researcher panel = new Researcher(frame, auth);
+						frame.setContentPane(panel);
+						frame.revalidate();
+					} else if (auth.login(uname, pass).getAccountType() == "Reviewer") {
+						Reviewer panel = new Reviewer(frame, auth);
+						frame.setContentPane(panel);
+						frame.revalidate();
+					} else if (auth.login(uname, pass).getAccountType() == "Editor") {
+						Editor panel = new Editor(frame, auth);
+						frame.setContentPane(panel);
+						frame.revalidate();
+					}
+				}
 			}
 		});
 		
@@ -84,7 +100,7 @@ public class login extends JPanel {
 		btnRegister.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				register panel = new register(frame, auth);
+				Register panel = new Register(frame, auth);
 				frame.setContentPane(panel);
 				frame.revalidate();
 			}
