@@ -14,7 +14,11 @@ public class Authenticator {
 	 * Default constructor for authenticator
 	 */
 	public Authenticator() {
+
 		// TODO Auto-generated constructor stub
+
+		//Auto-generated constructor stub
+
 	}
 	
 	/**
@@ -24,6 +28,7 @@ public class Authenticator {
 	 * @param password
 	 * @return checks the inputs against the database and outputs if the registration was a success or if there exists an issue 
 	 */
+
 	public String register(String username, String password, String acctType) {
 		boolean correctuser = Account.checkUsername(username);
 		boolean correctpass = Account.checkPassword(password);
@@ -43,6 +48,25 @@ public class Authenticator {
 		}
 		if(!notsameuser) {
 			System.out.println("Username taken");
+
+	public String register(String username, String password) {
+		
+		boolean correctuser = Account.checkUsername(username);
+		boolean correctpass = Account.checkPassword(password);
+		boolean notsameuser = !accounts.containsKey(username);
+		
+		if(correctuser && correctpass && notsameuser) {
+			accounts.put(username, new Account(username, password));
+			return "Works";
+		}
+		if(!correctuser) {
+			return "Invalid username";
+		}
+		if(!correctpass) {
+			return "Invalid password";
+		}
+		if(!notsameuser) {
+
 			return "Username taken";
 		}
 		return "Unknown issue"; 
@@ -62,10 +86,16 @@ public class Authenticator {
 				return accounts.get(username);
 			}
 			else {
+
+				System.out.println("fail to login, please check your password");
+
 				return null;
 			}
 		}
 		else {
+
+			System.out.println("cannot find user, please click register to create a new account");
+
 			return null;
 		}
 	}
