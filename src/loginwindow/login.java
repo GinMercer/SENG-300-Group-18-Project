@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 
-public class Login extends JPanel {
+public class login extends JPanel {
 	/**
 	 * 
 	 */
@@ -31,7 +31,7 @@ public class Login extends JPanel {
 	 * @param frame
 	 * @param auth
 	 */
-	public Login(JFrame frame, Authenticator auth) {
+	public login(JFrame frame, authenticator auth) {
 		setBackground(Color.GRAY);
 		
 		JLabel lblWelcomeToOpen = new JLabel("Welcome to Open Journal Submission System");
@@ -100,7 +100,7 @@ public class Login extends JPanel {
 		btnRegister.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				Register panel = new Register(frame, auth);
+				register panel = new register(frame, auth);
 				frame.setContentPane(panel);
 				frame.revalidate();
 			}

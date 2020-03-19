@@ -15,13 +15,13 @@ public class Reviewer extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Reviewer(JFrame frame, Authenticator auth) {
+	public Reviewer(JFrame frame, authenticator auth) {
 		setBackground(Color.DARK_GRAY);
 		
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Login panel = new Login(frame, auth);
+				login panel = new login(frame, auth);
 				frame.setContentPane(panel);
 				frame.revalidate();
 			}

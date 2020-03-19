@@ -20,7 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.DefaultComboBoxModel;
 
-public class Register extends JPanel {
+public class register extends JPanel {
 	/**
 	 * 
 	 */
@@ -33,7 +33,7 @@ public class Register extends JPanel {
 	/**
 	 * Create the panel. Constructor for register that takes a JFrame and an authenticator.
 	 */
-	public Register(JFrame frame, Authenticator auth) {
+	public register(JFrame frame, authenticator auth) {
 		setBackground(new Color(255, 255, 153));
 		setLayout(null);
 		
@@ -74,7 +74,7 @@ public class Register extends JPanel {
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				Login panel = new Login(frame, auth);
+				login panel = new login(frame, auth);
 				frame.setContentPane(panel);
 				frame.revalidate();
 			}
@@ -124,7 +124,7 @@ public class Register extends JPanel {
 				//check if username and password is valid
 				if(tmp == "Works") {
 					JOptionPane.showMessageDialog(null, "You create your account successfully!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-					Login panel = new Login(frame, auth);
+					login panel = new login(frame, auth);
 					frame.setContentPane(panel);
 					frame.revalidate();
 				}
