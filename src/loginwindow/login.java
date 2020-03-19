@@ -21,7 +21,7 @@ public class login extends JPanel {
 	/**
 	 * 
 	 */
-
+	private static final long serialVersionUID = 1L;
 	private JTextField textUser;
 	private JPasswordField textPass;
 
@@ -62,9 +62,7 @@ public class login extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				String user = textUser.getText();
 				String pass = String.valueOf( textPass.getPassword());
-				auth.login(user, pass);
-				
-				
+							
 				if ((user == null || user.isEmpty()) && (pass == null || pass.isEmpty())) {
 					JOptionPane.showMessageDialog(null, "Please enter username and password", "ERROR", JOptionPane.ERROR_MESSAGE);
                     //JOptionPane.showMessageDialog(null, "Please enter username and password", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -77,6 +75,24 @@ public class login extends JPanel {
 		});
 		loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String uname = textUser.getText();
+				String pass = String.valueOf( textPass.getPassword());
+				
+				if (auth.login(uname, pass) != null) {
+					if (auth.login(uname, pass).getAccountType() == "Researcher") {
+						Researcher panel = new Researcher(frame, auth);
+						frame.setContentPane(panel);
+						frame.revalidate();
+					} else if (auth.login(uname, pass).getAccountType() == "Reviewer") {
+						Reviewer panel = new Reviewer(frame, auth);
+						frame.setContentPane(panel);
+						frame.revalidate();
+					} else if (auth.login(uname, pass).getAccountType() == "Editor") {
+						Editor panel = new Editor(frame, auth);
+						frame.setContentPane(panel);
+						frame.revalidate();
+					}
+				}
 			}
 		});
 		

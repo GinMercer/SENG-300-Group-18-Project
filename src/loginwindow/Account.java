@@ -1,12 +1,13 @@
 package loginwindow;
 
 public class Account {
-
+	
 	private String username;
 	
 	private String password;
-
-
+	
+	private String accountType;
+	
 	/**
 	 * Checks if given input is a valid input for a username (username should not be longer than 16).
 	 *
@@ -27,7 +28,7 @@ public class Account {
 	 * @param pass
 	 * @return true if length is greater than or equal to 8, false otherwise
 	 */
-
+	
 	public static boolean checkPassword(String pass) {
 		if(pass.length() >= 8) {
 			return true;
@@ -41,9 +42,10 @@ public class Account {
 	 * @param user
 	 * @param pass
 	 */
-	public Account(String user, String pass) {
+	public Account(String user, String pass, String accountType) {
 		this.username = user;
 		this.password = pass;
+		this.accountType = accountType;
 	}
 
 	/**
@@ -90,6 +92,24 @@ public class Account {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Gets the account type of an Account object
+	 * 
+	 * @return account type
+	 */
+	protected String getAccountType() {
+		return accountType;
+	}
+	
+	/**
+	 * Sets the account type of an Account object
+	 * 
+	 * @param accountType
+	 */
+	protected void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 
 }

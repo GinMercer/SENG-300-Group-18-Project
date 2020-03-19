@@ -35,7 +35,7 @@ public class Mainframe {
 	}
 
 	/**
-	 * Initialize properties of the JFrame object
+	 * Default constructor for Mainframe
 	 */
 	private void initialize() {
 		frame = new JFrame();
