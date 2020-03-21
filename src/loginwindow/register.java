@@ -154,7 +154,7 @@ public class register extends JPanel {
 		acctType = new JComboBox();
 		acctType.setFont(new Font("Dialog", Font.PLAIN, 14));
 		acctType.setModel(new DefaultComboBoxModel(new String[] {"Researcher", "Reviewer", "Editor"}));
-		acctType.setBounds(280, 292, 120, 32);
+		acctType.setBounds(280, 292, 176, 32);
 		add(acctType);
 		
 		JLabel lblAccountType = new JLabel("Account Type");

@@ -1,4 +1,4 @@
-package basicloginapp;
+package loginwindow;
 
 import javax.swing.JPanel;
 import java.awt.Color;
