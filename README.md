@@ -32,7 +32,7 @@ First, add the git repository into eclipse. This is visible in the drop down men
 - Sebastian Collard
 - Boxiao Li
 _________________________________________________________________________________________________________________________________________
-Iteration 1 (As of March 2)
+Iteration 2 (As of March 20)
 
 The user must have java installed in their system to run the program that we upload on this project.
 The user may run the program by simply running the executable jar file or by importing the project into an IDE and running it using the IDE, or compiling and running the program with the commandline/terminal.
@@ -47,6 +47,5 @@ The user may run the program by simply running the executable jar file or by imp
 
 - Inside the submission pages and main menu, the user can interact with a dropdown list containing dummy objects which are placeholders for both the submission pages and the main menu. Which will be added later on.
 
-- At the bottom of these windows, there is a search selection which currently does not do anything and will be implemented later on.
 
 We will enchance the system to meet the needs later on.
