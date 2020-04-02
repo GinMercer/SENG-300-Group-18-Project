@@ -20,7 +20,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
 public class Reviewer extends JPanel {
-	private JTextField txtZzz;
+	private JTextField txtNowReviewing;
+	private JTextField chosenBy;
 
 	/**
 	 * Create the panel.
@@ -28,6 +29,7 @@ public class Reviewer extends JPanel {
 	public Reviewer(JFrame frame, Authenticator auth) {
 		setBackground(Color.GRAY);
 		
+		// Adds the back button
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.setBounds(20, 11, 75, 29);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -40,11 +42,13 @@ public class Reviewer extends JPanel {
 		setLayout(null);
 		add(btnNewButton);
 		
+		// This is the label for the title, Reviewer Page
 		JLabel lblreveiwerpage = new JLabel("Reviewer Page");
 		lblreveiwerpage.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		lblreveiwerpage.setBounds(306, 11, 194, 40);
 		add(lblreveiwerpage);
 		
+		// Create a new comboBox, for the dropdown menu to select what to review
 		JComboBox viewTab = new JComboBox();
 		
 		// This checks for the event that if you selected a new item on the combo box
@@ -55,11 +59,11 @@ public class Reviewer extends JPanel {
 				
 				viewTab.removeItem("none");
 				
-				txtZzz = new JTextField();
-				txtZzz.setText(selectedReviewer);
-				txtZzz.setBounds(464, 132, 86, 20);
-				add(txtZzz);
-				txtZzz.setColumns(10);
+				txtNowReviewing = new JTextField();
+				txtNowReviewing.setText(selectedReviewer);
+				txtNowReviewing.setBounds(464, 132, 86, 20);
+				add(txtNowReviewing);
+				txtNowReviewing.setColumns(10);
 				
 				System.out.println(selectedReviewer);
 			}
@@ -87,6 +91,11 @@ public class Reviewer extends JPanel {
 		nowView.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nowView.setBounds(454, 90, 159, 37);
 		add(nowView);
+		
+		chosenBy = new JTextField();
+		chosenBy.setBounds(485, 20, 86, 20);
+		add(chosenBy);
+		chosenBy.setColumns(10);
 		
 		
 

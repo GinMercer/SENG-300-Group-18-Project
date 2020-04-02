@@ -48,6 +48,10 @@ public class Account {
 		this.accountType = accountType;
 	}
 
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * Gets the username of an Account object.
 	 * 

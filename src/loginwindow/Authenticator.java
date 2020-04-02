@@ -4,6 +4,7 @@
 package loginwindow;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 
 public class Authenticator {
@@ -68,6 +69,29 @@ public class Authenticator {
 		else {
 			return null;
 		}
+	}
+	
+	/**
+	 * Checks to see if the account is in the database
+	 * @param key
+	 * @return Returns the account name
+	 */
+	public String checkAccountName(String key) {
+		if (accounts.containsKey(key)) {
+			System.out.println("true");
+			return accounts.get(key).getUsername();
+		} else {
+			System.out.println("false");
+			return null;
+		}
+	}
+	
+	public ArrayList allAccounts() {
+		ArrayList<Account> allaccount = new ArrayList<Account>();
+		for (Account i : accounts.values()) {
+			allaccount.add(i);
+		}
+		return allaccount;
 	}
 
 }
