@@ -2,9 +2,12 @@ package loginwindow;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Event;
+
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -14,8 +17,10 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class Reviewer extends JPanel {
+	private JTextField txtZzz;
 
 	/**
 	 * Create the panel.
@@ -24,7 +29,7 @@ public class Reviewer extends JPanel {
 		setBackground(Color.GRAY);
 		
 		JButton btnNewButton = new JButton("Back");
-		btnNewButton.setBounds(227, 52, 75, 29);
+		btnNewButton.setBounds(20, 11, 75, 29);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				login panel = new login(frame, auth);
@@ -37,18 +42,36 @@ public class Reviewer extends JPanel {
 		
 		JLabel lblreveiwerpage = new JLabel("Reviewer Page");
 		lblreveiwerpage.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblreveiwerpage.setBounds(310, 42, 194, 40);
+		lblreveiwerpage.setBounds(306, 11, 194, 40);
 		add(lblreveiwerpage);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Dialog", Font.PLAIN, 14));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"haskell", "prolog", "java"}));
-		comboBox.setBounds(170, 150, 220, 40);
-		add(comboBox);
+		JComboBox viewTab = new JComboBox();
 		
-		JLabel lblpapershouldview = new JLabel("Paper should view");
+		// This checks for the event that if you selected a new item on the combo box
+		viewTab.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox<String> combo = (JComboBox<String>) e.getSource();
+				String selectedReviewer = (String) combo.getSelectedItem();
+				
+				viewTab.removeItem("none");
+				
+				txtZzz = new JTextField();
+				txtZzz.setText(selectedReviewer);
+				txtZzz.setBounds(464, 132, 86, 20);
+				add(txtZzz);
+				txtZzz.setColumns(10);
+				
+				System.out.println(selectedReviewer);
+			}
+		});
+		viewTab.setFont(new Font("Dialog", Font.PLAIN, 14));
+		viewTab.setModel(new DefaultComboBoxModel(new String[] {"none","Haskell", "Prolog", "Java"}));
+		viewTab.setBounds(20, 120, 220, 40);
+		add(viewTab);
+		
+		JLabel lblpapershouldview = new JLabel("Select which Paper to view");
 		lblpapershouldview.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		lblpapershouldview.setBounds(180, 125, 220, 29);
+		lblpapershouldview.setBounds(20, 80, 220, 29);
 		add(lblpapershouldview);
 		
 		JButton btnDone = new JButton("DONE");
@@ -57,9 +80,15 @@ public class Reviewer extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		btnDone.setBounds(421, 156, 117, 29);
+		btnDone.setBounds(20, 266, 128, 37);
 		add(btnDone);
+		
+		JLabel nowView = new JLabel("Now viewing");
+		nowView.setFont(new Font("Dialog", Font.PLAIN, 20));
+		nowView.setBounds(454, 90, 159, 37);
+		add(nowView);
+		
+		
 
 	}
-
 }
