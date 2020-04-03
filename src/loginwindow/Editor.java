@@ -15,12 +15,16 @@ import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import java.util.ArrayList;
+
 public class Editor extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
+	
 	public Editor(JFrame frame, Authenticator auth) {
+		
 		setBackground(Color.GRAY);
 		
 		JButton btnNewButton = new JButton("Back");
@@ -42,6 +46,19 @@ public class Editor extends JPanel {
 		add(lblNewLabel);
 		
 		JComboBox comboBoxforpaperchooser = new JComboBox();
+		
+		ArrayList<String> dropDown = new ArrayList();
+		
+		// This is for making a new ArrayList of all the accounts that are Reviewers, that way the editor can choose them.
+		for (int i = 0; i < auth.allAccounts().size(); i++) {
+			Account accountIteration = new Account();
+			accountIteration = (Account)auth.allAccounts().get(i);
+			if (accountIteration.getAccountType() == "Reviewer") {
+				String name = accountIteration.getUsername();
+				dropDown.add(name);
+			}
+		}
+		
 		comboBoxforpaperchooser.setFont(new Font("Dialog", Font.PLAIN, 14));
 		comboBoxforpaperchooser.setModel(new DefaultComboBoxModel(new String[] {"haskell", "prolog", "java"}));
 		comboBoxforpaperchooser.setBounds(120, 170, 200, 39);
@@ -49,19 +66,19 @@ public class Editor extends JPanel {
 		
 		JComboBox comboBoxfor1reveiwer = new JComboBox();
 		comboBoxfor1reveiwer.setFont(new Font("Dialog", Font.PLAIN, 14));
-		comboBoxfor1reveiwer.setModel(new DefaultComboBoxModel(new String[] {"Mike", "Tom", "Jerry"}));
+		comboBoxfor1reveiwer.setModel(new DefaultComboBoxModel(dropDown.toArray()));
 		comboBoxfor1reveiwer.setBounds(396, 170, 200, 39);
 		add(comboBoxfor1reveiwer);
 		
 		JComboBox comboBoxfor2reviewer = new JComboBox();
 		comboBoxfor2reviewer.setFont(new Font("Dialog", Font.PLAIN, 14));
-		comboBoxfor2reviewer.setModel(new DefaultComboBoxModel(new String[] {"Mike", "Tom", "Jerry"}));
+		comboBoxfor2reviewer.setModel(new DefaultComboBoxModel(dropDown.toArray()));
 		comboBoxfor2reviewer.setBounds(396, 234, 200, 39);
 		add(comboBoxfor2reviewer);
 		
 		JComboBox comboBoxfor3reviewer = new JComboBox();
 		comboBoxfor3reviewer.setFont(new Font("Dialog", Font.PLAIN, 14));
-		comboBoxfor3reviewer.setModel(new DefaultComboBoxModel(new String[] {"Mike", "Tom", "Jerry"}));
+		comboBoxfor3reviewer.setModel(new DefaultComboBoxModel(dropDown.toArray()));
 		comboBoxfor3reviewer.setBounds(396, 300, 200, 39);
 		add(comboBoxfor3reviewer);
 		
