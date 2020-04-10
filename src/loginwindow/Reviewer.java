@@ -17,15 +17,17 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 
 public class Reviewer extends JPanel {
 	private JTextField txtNowReviewing;
-	private JTextField chosenBy;
 
 	/**
 	 * Create the panel.
 	 */
+	
 	public Reviewer(JFrame frame, Authenticator auth) {
 		setBackground(Color.GRAY);
 		
@@ -41,6 +43,18 @@ public class Reviewer extends JPanel {
 		});
 		setLayout(null);
 		add(btnNewButton);
+		
+		ArrayList<String> dropDown = new ArrayList();
+		dropDown.add("None");
+		
+		// This is for making a new ArrayList of all the accounts that are Reviewers, that way the editor can choose them.
+		for (int i = 0; i < auth.allAccounts().size(); i++) {
+			Account accountIteration = new Account();
+			accountIteration = (Account)auth.allAccounts().get(i);
+			if (accountIteration.getAccountType() == "Reviewer") {
+				String name = accountIteration.getUsername();
+				dropDown.add(name);
+			}
 		
 		// This is the label for the title, Reviewer Page
 		JLabel lblreveiwerpage = new JLabel("Reviewer Page");
@@ -69,7 +83,7 @@ public class Reviewer extends JPanel {
 			}
 		});
 		viewTab.setFont(new Font("Dialog", Font.PLAIN, 14));
-		viewTab.setModel(new DefaultComboBoxModel(new String[] {"none","Haskell", "Prolog", "Java"}));
+		viewTab.setModel(new DefaultComboBoxModel(dropDown.toArray()));
 		viewTab.setBounds(20, 120, 220, 40);
 		add(viewTab);
 		
@@ -84,7 +98,7 @@ public class Reviewer extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		btnDone.setBounds(20, 266, 128, 37);
+		btnDone.setBounds(20, 186, 128, 37);
 		add(btnDone);
 		
 		JLabel nowView = new JLabel("Now viewing");
@@ -92,12 +106,8 @@ public class Reviewer extends JPanel {
 		nowView.setBounds(454, 90, 159, 37);
 		add(nowView);
 		
-		chosenBy = new JTextField();
-		chosenBy.setBounds(485, 20, 86, 20);
-		add(chosenBy);
-		chosenBy.setColumns(10);
-		
 		
 
+	}
 	}
 }

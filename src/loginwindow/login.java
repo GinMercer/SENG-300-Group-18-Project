@@ -34,29 +34,29 @@ public class login extends JPanel {
 	public login(JFrame frame, Authenticator auth) {
 		setBackground(Color.GRAY);
 		
-		JLabel lblWelcomeToOpen = new JLabel("Welcome to Open Journal Submission System");
+		JLabel lblWelcomeToOpen = new JLabel("Welcome to the Open Journal Submission System");
 		lblWelcomeToOpen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcomeToOpen.setBounds(89, 53, 526, 30);
+		lblWelcomeToOpen.setBounds(10, 55, 780, 30);
 		lblWelcomeToOpen.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		
 		JLabel lblUsername = new JLabel("Username:");
 		lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsername.setBounds(195, 183, 92, 22);
+		lblUsername.setBounds(233, 183, 92, 22);
 		lblUsername.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPassword.setBounds(195, 253, 87, 22);
+		lblPassword.setBounds(238, 253, 87, 22);
 		lblPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		
 		textUser = new JTextField();
-		textUser.setBounds(331, 178, 180, 32);
+		textUser.setBounds(369, 178, 180, 32);
 		textUser.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		textUser.setColumns(10);
 		
 		JButton loginbtn = new JButton("Login");
 		loginbtn.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		loginbtn.setBounds(411, 339, 100, 40);
+		loginbtn.setBounds(449, 339, 100, 40);
 		loginbtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -107,7 +107,7 @@ public class login extends JPanel {
 		});
 			
 		btnRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		btnRegister.setBounds(220, 339, 120, 40);	
+		btnRegister.setBounds(259, 339, 120, 40);	
 			
 		setLayout(null);
 		add(lblWelcomeToOpen);
@@ -118,7 +118,7 @@ public class login extends JPanel {
 		add(loginbtn);
 		
 		textPass = new JPasswordField();
-		textPass.setBounds(331, 243, 180, 32);
+		textPass.setBounds(369, 251, 180, 32);
 		add(textPass);
 
 	}

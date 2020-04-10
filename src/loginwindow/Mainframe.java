@@ -39,7 +39,7 @@ public class Mainframe {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 500);
+		frame.setBounds(100, 100, 800, 600);
 		login panel = new login(frame, auth);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(panel);
