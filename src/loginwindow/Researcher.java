@@ -3,6 +3,7 @@ package loginwindow;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.DefaultComboBoxModel;
@@ -10,17 +11,30 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 
 public class Researcher extends JPanel {
+	
+	private ArrayList<String> dropDownResearcher = new ArrayList();
+	private String selectedReviewer = "None";
+	private String alreadySelect = "None";
 
 	/**
 	 * Create the panel.
 	 */
+	
+	public String returnSelectedReviewer() {
+		return selectedReviewer;
+	}
+	
+	
 	public Researcher(JFrame frame, Authenticator auth) {
 		setBackground(Color.LIGHT_GRAY);
 		
@@ -35,6 +49,17 @@ public class Researcher extends JPanel {
 		});
 		setLayout(null);
 		add(btnback);
+		
+		dropDownResearcher.add("None");
+		
+		// This is for making a new ArrayList of all the accounts that are Reviewers
+				for (int i = 0; i < auth.allAccounts().size(); i++) {
+					Account accountIteration = new Account();
+					accountIteration = (Account)auth.allAccounts().get(i);
+					if (accountIteration.getAccountType() == "Reviewer") {
+						String name = accountIteration.getUsername();
+						dropDownResearcher.add(name);
+					}
 		
 		JLabel lblresearchpage = new JLabel("Researcher Page");
 		lblresearchpage.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -78,14 +103,39 @@ public class Researcher extends JPanel {
 		add(lblSelectReviewer);
 		
 		JComboBox reviewerBox = new JComboBox();
+		reviewerBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox<String> combo3 = (JComboBox<String>) e.getSource();
+			     String selected = (String) combo3.getSelectedItem();
+			     selectedReviewer = selected;
+			     System.out.println(selectedReviewer);
+			}
+		});
 		reviewerBox.setFont(new Font("Dialog", Font.PLAIN, 14));
-		reviewerBox.setModel(new DefaultComboBoxModel(new String[] {"abc", "def", "ghi"}));
+		reviewerBox.setModel(new DefaultComboBoxModel(dropDownResearcher.toArray()));
 		reviewerBox.setBounds(141, 132, 214, 27);
 		add(reviewerBox);
 		
 		JButton btnNewButton = new JButton("Done");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if ((alreadySelect == selectedReviewer)&&(selectedReviewer != "None")) {
+					JOptionPane.showMessageDialog(null, "You have already selected this reviewer", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else if (selectedReviewer == "None") {
+					JOptionPane.showMessageDialog(null, "Please selected a reviewer", "ERROR", JOptionPane.ERROR_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "You have selected " + selectedReviewer, "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+					alreadySelect = selectedReviewer;
+				}
+			}
+		});
 		btnNewButton.setBounds(186, 170, 117, 29);
 		add(btnNewButton);
 
 	}
+}
 }

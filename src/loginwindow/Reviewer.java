@@ -23,6 +23,8 @@ import javax.swing.JTextField;
 
 public class Reviewer extends JPanel {
 	private JTextField txtNowReviewing;
+	private ArrayList<String> researcherPapers = new ArrayList<>();
+	private ArrayList<String> allReviewer = new ArrayList<>();
 
 	/**
 	 * Create the panel.
@@ -44,46 +46,32 @@ public class Reviewer extends JPanel {
 		setLayout(null);
 		add(btnNewButton);
 		
-		ArrayList<String> dropDown = new ArrayList();
-		dropDown.add("None");
-		
-		// This is for making a new ArrayList of all the accounts that are Reviewers, that way the editor can choose them.
-		for (int i = 0; i < auth.allAccounts().size(); i++) {
-			Account accountIteration = new Account();
-			accountIteration = (Account)auth.allAccounts().get(i);
-			if (accountIteration.getAccountType() == "Reviewer") {
-				String name = accountIteration.getUsername();
-				dropDown.add(name);
-			}
-		
 		// This is the label for the title, Reviewer Page
 		JLabel lblreveiwerpage = new JLabel("Reviewer Page");
 		lblreveiwerpage.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		lblreveiwerpage.setBounds(306, 11, 194, 40);
 		add(lblreveiwerpage);
 		
-		// Create a new comboBox, for the dropdown menu to select what to review
+		// Create a new comboBox, for the dropDownReviewer menu to select what to review
 		JComboBox viewTab = new JComboBox();
 		
 		// This checks for the event that if you selected a new item on the combo box
 		viewTab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> combo = (JComboBox<String>) e.getSource();
-				String selectedReviewer = (String) combo.getSelectedItem();
-				
-				viewTab.removeItem("none");
+				String selectedPaper = (String) combo.getSelectedItem();
 				
 				txtNowReviewing = new JTextField();
-				txtNowReviewing.setText(selectedReviewer);
+				txtNowReviewing.setText(selectedPaper);
 				txtNowReviewing.setBounds(464, 132, 86, 20);
 				add(txtNowReviewing);
 				txtNowReviewing.setColumns(10);
 				
-				System.out.println(selectedReviewer);
+				System.out.println(selectedPaper);
 			}
 		});
 		viewTab.setFont(new Font("Dialog", Font.PLAIN, 14));
-		viewTab.setModel(new DefaultComboBoxModel(dropDown.toArray()));
+		viewTab.setModel(new DefaultComboBoxModel(researcherPapers.toArray()));
 		viewTab.setBounds(20, 120, 220, 40);
 		add(viewTab);
 		
@@ -110,4 +98,3 @@ public class Reviewer extends JPanel {
 
 	}
 	}
-}
