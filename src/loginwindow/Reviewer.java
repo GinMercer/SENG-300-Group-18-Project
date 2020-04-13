@@ -17,15 +17,19 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 
 public class Reviewer extends JPanel {
 	private JTextField txtNowReviewing;
-	private JTextField chosenBy;
+	private ArrayList<String> researcherPapers = new ArrayList<>();
+	private ArrayList<String> allReviewer = new ArrayList<>();
 
 	/**
 	 * Create the panel.
 	 */
+	
 	public Reviewer(JFrame frame, Authenticator auth) {
 		setBackground(Color.GRAY);
 		
@@ -48,28 +52,26 @@ public class Reviewer extends JPanel {
 		lblreveiwerpage.setBounds(306, 11, 194, 40);
 		add(lblreveiwerpage);
 		
-		// Create a new comboBox, for the dropdown menu to select what to review
+		// Create a new comboBox, for the dropDownReviewer menu to select what to review
 		JComboBox viewTab = new JComboBox();
 		
 		// This checks for the event that if you selected a new item on the combo box
 		viewTab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> combo = (JComboBox<String>) e.getSource();
-				String selectedReviewer = (String) combo.getSelectedItem();
-				
-				viewTab.removeItem("none");
+				String selectedPaper = (String) combo.getSelectedItem();
 				
 				txtNowReviewing = new JTextField();
-				txtNowReviewing.setText(selectedReviewer);
+				txtNowReviewing.setText(selectedPaper);
 				txtNowReviewing.setBounds(464, 132, 86, 20);
 				add(txtNowReviewing);
 				txtNowReviewing.setColumns(10);
 				
-				System.out.println(selectedReviewer);
+				System.out.println(selectedPaper);
 			}
 		});
 		viewTab.setFont(new Font("Dialog", Font.PLAIN, 14));
-		viewTab.setModel(new DefaultComboBoxModel(new String[] {"none","Haskell", "Prolog", "Java"}));
+		viewTab.setModel(new DefaultComboBoxModel(researcherPapers.toArray()));
 		viewTab.setBounds(20, 120, 220, 40);
 		add(viewTab);
 		
@@ -84,7 +86,7 @@ public class Reviewer extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		btnDone.setBounds(20, 266, 128, 37);
+		btnDone.setBounds(20, 186, 128, 37);
 		add(btnDone);
 		
 		JLabel nowView = new JLabel("Now viewing");
@@ -92,12 +94,7 @@ public class Reviewer extends JPanel {
 		nowView.setBounds(454, 90, 159, 37);
 		add(nowView);
 		
-		chosenBy = new JTextField();
-		chosenBy.setBounds(485, 20, 86, 20);
-		add(chosenBy);
-		chosenBy.setColumns(10);
-		
 		
 
 	}
-}
+	}
