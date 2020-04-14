@@ -84,11 +84,12 @@ public class login extends JPanel {
 						frame.setContentPane(panel);
 						frame.revalidate();
 					} else if (auth.login(uname, pass).getAccountType() == "Reviewer") {
-						Reviewer panel = new Reviewer(frame, auth);
+						System.out.println(uname);
+						Reviewer panel = new Reviewer(frame, auth,uname);
 						frame.setContentPane(panel);
 						frame.revalidate();
 					} else if (auth.login(uname, pass).getAccountType() == "Editor") {
-						Editor panel = new Editor(frame, auth);
+						Editor panel = new Editor(frame, auth,uname);
 						frame.setContentPane(panel);
 						frame.revalidate();
 					}

@@ -25,18 +25,19 @@ public class Researcher extends JPanel {
 	private ArrayList<String> dropDownResearcher = new ArrayList();
 	private String selectedReviewer = "None";
 	private String alreadySelect = "None";
+	private Account selectedAccount = new Account();
+	private File thisFile = new File("null");
+	private String fileName = "null";
 
 	/**
 	 * Create the panel.
 	 */
 	
-	public String returnSelectedReviewer() {
-		return selectedReviewer;
-	}
-	
 	
 	public Researcher(JFrame frame, Authenticator auth) {
 		setBackground(Color.LIGHT_GRAY);
+		
+		dropDownResearcher = auth.getReviewerList();
 		
 		JButton btnback = new JButton("Back");
 		btnback.setBounds(10, 11, 75, 29);
@@ -49,17 +50,6 @@ public class Researcher extends JPanel {
 		});
 		setLayout(null);
 		add(btnback);
-		
-		dropDownResearcher.add("None");
-		
-		// This is for making a new ArrayList of all the accounts that are Reviewers
-				for (int i = 0; i < auth.allAccounts().size(); i++) {
-					Account accountIteration = new Account();
-					accountIteration = (Account)auth.allAccounts().get(i);
-					if (accountIteration.getAccountType() == "Reviewer") {
-						String name = accountIteration.getUsername();
-						dropDownResearcher.add(name);
-					}
 		
 		JLabel lblresearchpage = new JLabel("Researcher Page");
 		lblresearchpage.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -81,7 +71,7 @@ public class Researcher extends JPanel {
 				JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 				
-                FileNameExtensionFilter extension = new FileNameExtensionFilter("*Paper", "pdf");   
+                FileNameExtensionFilter extension = new FileNameExtensionFilter("*pdf", "pdf");   
                 chooser.addChoosableFileFilter(extension);
                 
                 int filestate = chooser.showOpenDialog(null);
@@ -90,13 +80,16 @@ public class Researcher extends JPanel {
                         File selectPaper = chooser.getSelectedFile();
                         path = chooser.getSelectedFile().getName();
                         lblPdfpath.setText(path);
+                        thisFile = selectPaper;
+                        fileName = selectPaper.getName();
+                        
                 }
 			}
 		});
 		btnselectpaper.setBounds(141, 92, 214, 29);
 		add(btnselectpaper);
 		
-		
+		dropDownResearcher.add("None");
 		
 		JLabel lblSelectReviewer = new JLabel("select reviewer:");
 		lblSelectReviewer.setBounds(10, 132, 102, 29);
@@ -121,15 +114,21 @@ public class Researcher extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				if (fileName.equals("null")) {
+					JOptionPane.showMessageDialog(null, "Please select a paper", "ERROR", JOptionPane.ERROR_MESSAGE);
+				} else
+				
 				if ((alreadySelect == selectedReviewer)&&(selectedReviewer != "None")) {
 					JOptionPane.showMessageDialog(null, "You have already selected this reviewer", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 				
 				else if (selectedReviewer == "None") {
-					JOptionPane.showMessageDialog(null, "Please selected a reviewer", "ERROR", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Please select a reviewer", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} else {
 					JOptionPane.showMessageDialog(null, "You have selected " + selectedReviewer, "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
 					alreadySelect = selectedReviewer;
+					auth.changeFile(thisFile);
+					auth.setAccountNameReviewer(selectedReviewer);
 				}
 			}
 		});
@@ -138,4 +137,5 @@ public class Researcher extends JPanel {
 
 	}
 }
-}
+
+

@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Event;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
@@ -17,6 +18,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
@@ -24,14 +26,20 @@ import javax.swing.JTextField;
 public class Reviewer extends JPanel {
 	private JTextField txtNowReviewing;
 	private ArrayList<String> researcherPapers = new ArrayList<>();
-	private ArrayList<String> allReviewer = new ArrayList<>();
+	private ArrayList<String> allEditor = new ArrayList<>();
+	private Paper thePaper = new Paper();
+	private String selectedEditor = "null";
+	
+	
 
 	/**
 	 * Create the panel.
 	 */
 	
-	public Reviewer(JFrame frame, Authenticator auth) {
+	public Reviewer(JFrame frame, Authenticator auth, String name) {
 		setBackground(Color.GRAY);
+		
+		allEditor = auth.getEditorList();
 		
 		// Adds the back button
 		JButton btnNewButton = new JButton("Back");
@@ -45,6 +53,13 @@ public class Reviewer extends JPanel {
 		});
 		setLayout(null);
 		add(btnNewButton);
+		
+		if (auth.getAccountNameReview() != null) {
+			if ((auth.getAccountNameReview().equals(name))) {
+				researcherPapers.add(auth.getFileName());
+				
+			}
+		}
 		
 		// This is the label for the title, Reviewer Page
 		JLabel lblreveiwerpage = new JLabel("Reviewer Page");
@@ -80,7 +95,7 @@ public class Reviewer extends JPanel {
 		lblpapershouldview.setBounds(20, 80, 220, 29);
 		add(lblpapershouldview);
 		
-		JButton btnDone = new JButton("DONE");
+		JButton btnDone = new JButton("DOWNLOAD");
 		btnDone.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -88,13 +103,46 @@ public class Reviewer extends JPanel {
 		});
 		btnDone.setBounds(20, 186, 128, 37);
 		add(btnDone);
+
 		
 		JLabel nowView = new JLabel("Now viewing");
 		nowView.setFont(new Font("Dialog", Font.PLAIN, 20));
 		nowView.setBounds(454, 90, 159, 37);
 		add(nowView);
 		
+		JComboBox editorBox = new JComboBox();
+		editorBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox<String> combo3 = (JComboBox<String>) e.getSource();
+			     String selected = (String) combo3.getSelectedItem();
+			     selectedEditor = selected;
+			     System.out.println(selectedEditor);
+			}
+		});
+		editorBox.setBounds(20, 357, 234, 40);
+		editorBox.setModel(new DefaultComboBoxModel(allEditor.toArray()));
+		add(editorBox);
 		
-
+		
+		JLabel editor = new JLabel("Select which Editor to edit the paper");
+		editor.setFont(new Font("Dialog", Font.PLAIN, 16));
+		editor.setBounds(20, 316, 290, 29);
+		add(editor);
+		
+		JButton btnDone_2 = new JButton("DONE");
+		btnDone_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (selectedEditor.equals("null")) {
+					JOptionPane.showMessageDialog(null, "Please select an Editor to review the paper", "ERROR", JOptionPane.ERROR_MESSAGE);
+				} else
+				
+				JOptionPane.showMessageDialog(null, "You have selected " + selectedEditor, "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+				auth.setAccountNameEditor(selectedEditor);
+			}
+		});
+		btnDone_2.setBounds(20, 425, 128, 37);
+		add(btnDone_2);
+		
 	}
 	}

@@ -4,12 +4,25 @@
 package loginwindow;
 
 import java.util.HashMap;
+import java.io.File;
 import java.util.ArrayList;
 
 
 public class Authenticator {
 	
 	private HashMap<String, Account> accounts = new HashMap<String, Account>();
+	
+	private Paper thePaper = new Paper();
+	
+	private File theFile = new File("None");
+	
+	private String accountNameForResearch;
+	
+	private String accountNameForEditor;
+	
+	private ArrayList<String> editorList = new ArrayList();
+	
+	private ArrayList<String> reviewerList = new ArrayList();
 
 	/**
 	 * Default constructor for authenticator
@@ -92,6 +105,60 @@ public class Authenticator {
 			allaccount.add(i);
 		}
 		return allaccount;
+	}
+	
+	public void changeFile(File theFile2) {
+		this.theFile = theFile2;
+	}
+	
+	public Paper getPaper() {
+		return this.thePaper;
+	}
+	
+	public String getFileName() {
+		return this.theFile.getName();
+	}
+	
+	public void setAccountNameReviewer(String name) {
+		this.accountNameForResearch = name;
+	}
+	
+	public String getAccountNameReview( ) {
+		return this.accountNameForResearch;
+	}
+	
+	public String getAccountNameEditor() {
+		return this.accountNameForEditor;
+	}
+	
+	public void setAccountNameEditor(String name) {
+		this.accountNameForEditor = name;
+	}
+	
+	public ArrayList getEditorList() {
+		for (int i = 0; i < this.allAccounts().size(); i++) {
+			Account accountIteration = new Account();
+			accountIteration = (Account)this.allAccounts().get(i);
+			if (accountIteration.getAccountType() == "Editor") {
+				String nameEditor = accountIteration.getUsername();
+				this.editorList.add(nameEditor);
+			}
+		}
+		
+		return editorList;
+	}
+	
+	public ArrayList getReviewerList() {
+		for (int i = 0; i < this.allAccounts().size(); i++) {
+			Account accountIteration = new Account();
+			accountIteration = (Account)this.allAccounts().get(i);
+			if (accountIteration.getAccountType() == "Reviewer") {
+				String name = accountIteration.getUsername();
+				reviewerList.add(name);
+			}
+		}
+		
+		return reviewerList;
 	}
 
 }

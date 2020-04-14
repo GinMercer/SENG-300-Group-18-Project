@@ -24,12 +24,16 @@ public class Editor extends JPanel {
 	private String reviewer2 = "None";
 	private String reviewer3 = "None";
 	private ArrayList<String> dropDown = new ArrayList<String>();
+	private ArrayList<String> paperBox = new ArrayList();
+	
 
 	/**
 	 * Create the panel.
 	 */
 	
-	public Editor(JFrame frame, Authenticator auth) {
+	public Editor(JFrame frame, Authenticator auth, String name2) {
+		
+		dropDown = auth.getReviewerList();
 		
 		setBackground(Color.GRAY);
 		
@@ -45,6 +49,16 @@ public class Editor extends JPanel {
 		setLayout(null);
 		add(btnNewButton);
 		
+		System.out.println(auth.getAccountNameEditor());
+		
+		if (auth.getAccountNameEditor() != null) {
+			if ((auth.getAccountNameEditor().equals(name2))) {
+				paperBox.add(auth.getFileName());
+				
+			}
+		}
+		
+		
 		// Create a new editor page and everything that is associated with it
 		JLabel lblNewLabel = new JLabel("Editor Page");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -58,22 +72,14 @@ public class Editor extends JPanel {
 		// Initialize the dropDown arrayList to have none, as there are no reviewers to select yet
 		dropDown.add("None");
 		
-		// This is for making a new ArrayList of all the accounts that are Reviewers, that way the editor can choose them.
-		// We will add applicable reviewers to dropDown
-		for (int i = 0; i < auth.allAccounts().size(); i++) {
-			Account accountIteration = new Account();
-			accountIteration = (Account)auth.allAccounts().get(i);
-			if (accountIteration.getAccountType() == "Reviewer") {
-				String name = accountIteration.getUsername();
-				dropDown.add(name);
-			}
-		}
+		// Gets the list of reviewers
+		dropDown = auth.getReviewerList();
 		
 		// This is a combo box for choosing which paper to view.
 		// This combo box will have all the papers that are submitted by a particular Researcher.
 		// As soon as you select an item from the combobox, the reviewer1 variable in Editor class becomes that item.
 		comboBoxforpaperchooser.setFont(new Font("Dialog", Font.PLAIN, 14));
-		comboBoxforpaperchooser.setModel(new DefaultComboBoxModel(new String[] {"haskell", "prolog", "java"}));
+		comboBoxforpaperchooser.setModel(new DefaultComboBoxModel(paperBox.toArray()));
 		comboBoxforpaperchooser.setBounds(10, 140, 200, 39);
 		add(comboBoxforpaperchooser);
 		
@@ -175,5 +181,6 @@ public class Editor extends JPanel {
 		btnfinishassign.setBounds(579, 282, 117, 29);
 		add(btnfinishassign);
 
+	
 	}
 }
