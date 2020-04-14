@@ -93,6 +93,8 @@ public class login extends JPanel {
 						frame.setContentPane(panel);
 						frame.revalidate();
 					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Account not found", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
